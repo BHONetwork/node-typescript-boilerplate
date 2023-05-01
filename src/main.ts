@@ -31,12 +31,12 @@ function delayedHello(
 export async function greeter(name: string) {
   // eslint-disable-line @typescript-eslint/no-explicit-any
   // The name parameter should be of type string. Any is used only to trigger the rule.
-  return await delayedHello(name, Delays.Short);
+  return await delayedHello(name, Delays.Long);
 }
 
-const main = async (): Promise<void> => {
-  const message = await greeter('World2');
-  console.log(message);
-};
+// const main = async (): Promise<void> => {
+//   const message = await greeter('World2');
+//   console.log(message);
+// };
 
-main();
+// main();
