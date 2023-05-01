@@ -9,10 +9,19 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: volta-cli/action@v1
-      - run: npm i -g pnpm
-      - run: pnpm install
-      - run: pnpm run lint --if-present
-      - run: pnpm test
-      - run: pnpm run build --if-present
+      - uses: pnpm/action-setup@v2
+        name: Install pnpm
+        id: pnpm-install
+        with:
+          version: 8
+          run_install: false
+      - name: Install dependencies
+        run: pnpm install
+      - name: Check formatting
+        run: pnpm run lint --if-present
+      - name: Run tests
+        run: pnpm test
+      - name: Run build
+        run: pnpm run build --if-present
         env:
           CI: true
